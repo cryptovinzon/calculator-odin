@@ -34,7 +34,7 @@ button {
     width: 200px;
 }
 
-#plus{
+#add{
     grid-column-start: 4;
     grid-row-start: 2;
     grid-row-end: 4;
@@ -46,7 +46,7 @@ button {
     grid-row-end: 6;
 }
 
-#plus,
+#add,
 .enter {
     height: auto;
 }
