@@ -1,4 +1,52 @@
-button {
-    width: 100px;
+.body{
+    width: 500px;
+}
+
+.result{
+    display: flex;
     height: 100px;
+    width: 400px;
+    background-color: lightgray;
+    border: solid;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: right;
+    font-size: 72px;
+}
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 400px;
+    gap: 10px;
+}
+
+button {
+    width: auto;
+    height: 100px;
+    padding: 0;
+}
+
+.zero{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 200px;
+}
+
+.plus{
+    grid-column-start: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.enter{
+    grid-column-start: 4;
+    grid-row-start: 4;
+    grid-row-end: 6;
+}
+
+.plus,
+.enter {
+    height: auto;
 }
