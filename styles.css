@@ -2,7 +2,7 @@
     width: 500px;
 }
 
-.result{
+#result{
     display: flex;
     height: 100px;
     width: 400px;
