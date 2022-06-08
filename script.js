@@ -26,7 +26,7 @@ const numbers = document.querySelectorAll('.number');
 
 numbers.forEach(number => {
     number.addEventListener('click', display)
-});
+})
 
 function display(e) {
     displayValue += e.target.innerHTML;
@@ -39,26 +39,33 @@ const operators = document.querySelectorAll('.operator')
 operators.forEach(operator => {
     operator.addEventListener('click', (e) =>{
         if(!firstNumber){
-        currentOperator = e.target.id;
         firstNumber = parseFloat(displayValue);
-        displayValue = '';
         } else {
         operate(currentOperator, firstNumber, parseFloat(displayValue));
-        currentOperator = e.target.id;
         firstNumber = memory;
-        displayValue = '';
         }
+        currentOperator = e.target.id;
+        displayValue = '';
+        });
     })
+
+// clear button
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+    clearData();
+    document.getElementById('result').innerHTML = ''; 
 })
 
-// clear and reset numbers
-const clear = document.getElementById('clear')
-clear.addEventListener('click', () => {
+function clearData() {
     firstNumber = '';
     displayValue = '';
     memory = '';
-    document.getElementById('result').innerHTML = '';
-})
+    currentOperator = '';
+}
 
+// solve & clear data
 const solve = document.getElementById('solve');
-solve.addEventListener('click', () => operate(currentOperator, firstNumber, parseFloat(displayValue)))
+solve.addEventListener('click', () => {
+    operate(currentOperator, firstNumber, parseFloat(displayValue));
+    clearData();
+})
