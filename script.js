@@ -1,40 +1,25 @@
-function add(a, b){
-    console.log(a + b);
-}
-
-function subtract(a, b){
-    console.log(a - b);
-}
-
-function multiply(a, b){
-    console.log(a * b);
-}
-
-function divide(a, b){
-    console.log(a / b);
-}
-
 function operate(op, a, b){
     switch (op){
         case 'add':
-            add(a, b);
+            memory = a + b;
             break;
         case 'subtract':
-            subtract(a, b);
+            memory = a - b;
             break;
         case 'multiply':
-            multiply(a, b)
+            memory = a * b;
             break;
         case 'divide':
-            divide(a, b);
+            memory = a / b;
             break;
-    }
+    }    
+    document.getElementById('result').innerHTML = Math.round(memory * 1000000 )/ 1000000;
 }
 
 let displayValue =''
+let firstNumber = null;
+let memory = null;
 let currentOperator = ''
-let firstNumber = '';
-let secondNumber ='';
 
 // listen for numbers and display
 const numbers = document.querySelectorAll('.number');
@@ -53,23 +38,25 @@ const operators = document.querySelectorAll('.operator')
 
 operators.forEach(operator => {
     operator.addEventListener('click', (e) =>{
-        firstNumber = parseFloat(displayValue);
+        if(!firstNumber){
         currentOperator = e.target.id;
-        getSecondNumber();
+        firstNumber = parseFloat(displayValue);
+        displayValue = '';
+        } else {
+        operate(currentOperator, firstNumber, parseFloat(displayValue));
+        currentOperator = e.target.id;
+        firstNumber = memory;
+        displayValue = '';
+        }
     })
 })
-
-function getSecondNumber(){
-    displayValue = '';
-    display;
-}
 
 // clear and reset numbers
 const clear = document.getElementById('clear')
 clear.addEventListener('click', () => {
     firstNumber = '';
-    secondNumber = '';
     displayValue = '';
+    memory = '';
     document.getElementById('result').innerHTML = '';
 })
 
